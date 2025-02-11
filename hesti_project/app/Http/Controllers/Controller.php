@@ -10,3 +10,11 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 }
+class UserController extends Controller{
+    public function index(){
+        return "halaman user";
+    }
+    public function show(){
+        return 'halaman profil 6';
+    }
+}

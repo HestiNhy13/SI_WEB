@@ -70,5 +70,28 @@ Route::get('user6/profile', function(){
     return "ini adalah halaman user6!";
 })->name('profile.user6');
 
-Route::get('user7/profile', ['ProfileController@show'])->name('profile.user6');
+Route::get('user7/profile', ['ProfileController@show'])->name('profile');
+
+$url = route('profile');
+return redirect()->route('profile');
+
+Route::get('/redirect-profile', function(){
+    return redirect()->route('profile', ['id'=>1, 'photos'=>'yes']);
+});
+
+Route::get('user7/{id}/profile', function ($id){
+    return view('profile', ['id' =>$id]);
+})->name('profile');
+
+Route::middleware(['hallo'])->group(function(){
+    Route::get('/profileLogin', [ProfileController::class, 'profile'])->name('profile');
+});
+Route::namespace('App\Http\Controller\User')->group(function(){
+    Route::get('/user/data', 'DataController@data')->name('user_data');
+});
+
+
+
+
+
 

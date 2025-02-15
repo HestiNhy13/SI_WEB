@@ -72,26 +72,31 @@ Route::get('user6/profile', function(){
 
 Route::get('user7/profile', ['ProfileController@show'])->name('profile');
 
+
 $url = route('profile');
 return redirect()->route('profile');
 
 Route::get('/redirect-profile', function(){
     return redirect()->route('profile', ['id'=>1, 'photos'=>'yes']);
 });
-
-Route::get('user7/{id}/profile', function ($id){
-    return view('profile', ['id' =>$id]);
-})->name('profile');
-
-Route::middleware(['hallo'])->group(function(){
-    Route::get('/profileLogin', [ProfileController::class, 'profile'])->name('profile');
+Route::middleware(['check.user'])->group(function(){
+    Route::get('/profileLogin',['UserController::class','profile'])->name('profile');
 });
 Route::namespace('App\Http\Controller\User')->group(function(){
-    Route::get('/user/data', 'DataController@data')->name('user_data');
+    Route::get('/user/info','UserController@info')->name('user.info');
 });
-
-
-
-
-
-
+Route::domain('{account}.example.com')->group(function(){
+    Route::get('/', function ($account){
+        return "ini halaman akun : ".$account;
+    });
+});
+Route::prefix('pengguna')->group(function(){
+    Route::get('/dashboard', function(){
+        return "ini adalah halaman dashboard pengguna";
+    });
+});
+Route::name('pre')->prefix('cobalagi')->group(function(){
+    Route::get('/dashboard', function(){
+        return "ini halaman dashboard prefix name";
+    });
+});

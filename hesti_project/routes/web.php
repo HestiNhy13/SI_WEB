@@ -1,10 +1,9 @@
 <?php
-
-// --------------------ACARA 3--------------------
-
-// mengimport kelas route dari laravel
+use App\Http\CustomerController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// --------------------ACARA 3--------------------
 Route::get('/', function () {
     return view('welcome');
 });
@@ -101,9 +100,11 @@ Route::name('pre')->prefix('cobalagi')->group(function(){
     });
 });
 
-Route::get('admin','ManagementUserController@index');
-
+// --------------------ACARA 5--------------------
+Use App\Http\Controllers\ManagementUserController;
+// Route::get('userr','ManagementUserController::class');
+Route::get('/admin1', 'ManagementUserController@index');
 //Home
-Route::get("/home", function(){
+Route::get("/admin", function(){
     return view("home");
 });

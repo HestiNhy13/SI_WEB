@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 class ManagementUserController extends Controller{
     public function index(){
-        return "Hallo ";
+        $name = "Hesti Nurhayati";
+        $nim = "E41232454";
+        $prodi = "Teknik Informatika";
+
+        return view('home', compact('nama', 'nim', 'prodi'));
     }
     public function create(){
         return "menampilkan halaman form tambah data";

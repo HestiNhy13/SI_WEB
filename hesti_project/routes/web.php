@@ -108,3 +108,6 @@ Route::get('/admin1', 'ManagementUserController@index');
 Route::get("/admin", function(){
     return view("home");
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

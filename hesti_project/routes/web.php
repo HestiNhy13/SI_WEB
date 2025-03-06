@@ -1,4 +1,8 @@
 <?php
+
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\backend\DashboardController;
 use App\Http\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -108,6 +112,13 @@ Route::get('/admin1', 'ManagementUserController@index');
 Route::get("/admin", function(){
     return view("home");
 });
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::groub(['namespace'=>'App\Http\Controllers\backend'], function(){
+//     Route::resource('/dashboard', DashboardController::class);
+// });
+
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

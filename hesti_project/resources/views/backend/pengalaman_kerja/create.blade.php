@@ -41,19 +41,19 @@
                                 <div class="form-group">
                                     <label for="cname" class="control-label col-lg-2">Jabatan<span class="required">*</label>
                                     <div class="col-lg-10">
-                                        <input class="form-control" id="jabatan" name="jabatan" minlength="2" type="text" required/>
+                                        <input class="form-control" id="jabatan" name="jabatan" minlength="2" type="text" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->jabatan : '' }}"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="curl" class="control-label col-lg-2">Tahun Masuk<span class="required">*</span></label>
                                     <div class="col-lg-10">
-                                        <input id="tahun_masuk" type="text" name="tahun_masuk" class="form-control" required>
+                                        <input id="tahun_masuk" type="text" name="tahun_masuk" class="form-control" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->tahun_masuk : '' }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="curl" class="control-label col-lg-2">Tahun Selesai<span class="required">*</span></label>
                                     <div class="col-lg-10">
-                                        <input id="tahun_keluar" type="text" name="tahun_keluar" class="form-control" required>
+                                        <input id="tahun_keluar" type="text" name="tahun_keluar" class="form-control" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->tahun_keluar : '' }}">
                                     </div>
                                 </div>
                                 <div class="form-group">

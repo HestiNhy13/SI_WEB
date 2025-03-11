@@ -130,3 +130,8 @@ Route::group(['namespace' => 'backend'], function(){
     Route::resource('pendidikan', 'PendidikanController');
     Route::resource('pengalaman_kerja', 'pengalaman_kerjaController');
 });
+
+Route::group(['namespace'=> 'backend'], function(){
+    Route::resource('dashboard', 'DashboardController');
+    Route::resource('pendidikan', 'PendidikanController');
+});

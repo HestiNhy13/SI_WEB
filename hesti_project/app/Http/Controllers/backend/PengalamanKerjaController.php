@@ -39,4 +39,8 @@ class PengalamanKerjaController extends Controller{
         ]);
         return redirect()->route('pengalaman_kerja.index')->with('success', 'Pengalaman Kerja berhasil diperbarui.');
     }
+    public function destroy($id){
+        DB::table('pengalaman_kerja')->where('id', $id)->delete();
+        return redirect()->route('pengalaman_kerja.index')->with('success', 'Data Pengalaman Kerja berhasil dihapus');
+    }
 }

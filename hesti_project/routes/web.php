@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\PendidikanController;
+use App\Http\Controllers\backend\PengalamanKerjaController;
 use App\Http\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -125,13 +127,12 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::group(['namespace' => 'backend'], function(){
-    Route::resource('dashboard', 'DashboardController');
-    Route::resource('pendidikan', 'PendidikanController');
-    Route::resource('pengalaman_kerja', 'pengalaman_kerjaController');
+Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
+    Route::resource('/pendidikan', PendidikanController::class)->names('pendidikan');
+    Route::resource('/pengalaman_kerja', PengalamanKerjaController::class)->names('pengalaman_kerja');
 });
 
-Route::group(['namespace'=> 'backend'], function(){
-    Route::resource('dashboard', 'DashboardController');
-    Route::resource('pendidikan', 'PendidikanController');
-});
+// Route::group(['namespace'=> 'backend'], function(){
+//     Route::resource('dashboard', 'DashboardController');
+//     Route::resource('/pendidikan', 'PendidikanController');
+// });

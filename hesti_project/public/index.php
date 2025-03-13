@@ -50,7 +50,7 @@ $kernel = $app->make(Kernel::class);
 
 $request = Request::capture(); // Memastikan request tertangkap dengan benar
 
-$response = $kernel->handle($request);
+$response = $kernel->handle($request); // Perbaikan ada di baris ini
 
 $response->send();
 

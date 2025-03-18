@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\PengalamanKerjaController;
 use App\Http\Controllers\CobaController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UploadController;
 use App\Http\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -140,9 +141,20 @@ Route::group(['namespace' => 'App\Http\Controllers\Backend'], function () {
 //     Route::resource('/pendidikan', 'PendidikanController');
 // });
 
-// acara 17 - 18
+// --------------------ACARA 17- 18 --------------------
 Route::get('/session/create', [SessionController::class, 'create']);
 Route::get('/pegawai/{nama}', [PegawaiController::class, 'index']);
 Route::get('/formulir', [PegawaiController::class, 'formulir']);
 Route::get('/formulir/proses', [PegawaiController::class,'proses']);
 Route::get('/cobaerror/{nama?}', [CobaController::class, 'index']);
+
+// --------------------ACARA 19--------------------
+Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
+Route::get('/upload/proses', [UploadController::class, 'proses_upload'])->name('upload_proses');
+Route::get('/upload/resize', [UploadController::class, 'resize_upload'])->name('upload_resize');
+
+// --------------------ACARA 20--------------------
+Route::get('/dropzone', [UploadController::class, 'dropzone'])->name('dropzone');
+Route::post('/dropzone/store', [UploadController::class, 'dropzone_store'])->name('dropzone.store');
+Route::get('/pdf_upload', [UploadController::class, 'pdf_upload'])->name('pdf.upload');
+Route::post('/pdf/store', [UploadController::class, 'pdf_store'])->name('pdf.store');
